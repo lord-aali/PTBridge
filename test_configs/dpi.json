@@ -1,0 +1,23 @@
+{
+  "server": [
+    {
+      "type": "dpi",
+      "https": "0.0.0.0:8443",
+      "self-signed": true,
+      "protocol": "h2",
+      "enc-key": "test-shared-key-1234"
+    }
+  ],
+  "client": [
+    {
+      "type": "dpi",
+      "address": "https://127.0.0.1:8443",
+      "insecure": true,
+      "protocol": "h2",
+      "listen": "127.0.0.1:4455",
+      "dns-upstream": "1.1.1.1:53",
+      "dns-network": "tcp",
+      "enc-key": "test-shared-key-1234"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "server": [
+    {
+      "type": "obfs4",
+      "listen": "0.0.0.0:3334",
+      "external": false,
+      "external-service": "127.0.0.1:1234",
+      "cert": "otnr4+v24yV0Ulbat6LRJ1jRXiSC/6JoJn68OjwVdkzwxHEkzItJD7Sq0kc8FE0k00zfbA",
+      "private-key": "b860bd3e5849e1a0d25f9574f549180c6c6388ee8fa0858b7615419136c4eb3b"
+    },
+    {
+      "type": "obfs3",
+      "listen": "0.0.0.0:3333",
+      "external": false,
+      "external-service": "127.0.0.1:1234"
+    },
+    {
+      "type": "obfs2",
+      "listen": "0.0.0.0:3332",
+      "external": false,
+      "external-service": "127.0.0.1:1234"
+    },
+    {
+      "type": "dpi",
+      "listen": "",
+      "external": false,
+      "external-service": "",
+      "enc-key": "change-me-shared-key",
+      "protocol": "auto",
+      "http": ":80",
+      "https": ":443",
+      "self-signed": true,
+      "redirect": "https://example.com"
+    },
+    {
+      "type": "dpi",
+      "listen": "",
+      "external": false,
+      "external-service": "",
+      "enc-key": "change-me-shared-key",
+      "protocol": "h2",
+      "https": ":8443",
+      "acme-email": "admin@your-domain.com",
+      "acme-domain": "bridge.your-domain.com",
+      "redirect": "https://www.wikipedia.org",
+      "cert-dir": "./acme-certs"
+    },
+    {
+      "type": "dpi",
+      "listen": "",
+      "external": false,
+      "external-service": "",
+      "enc-key": "change-me-shared-key",
+      "protocol": "h2",
+      "https": ":9443",
+      "tls-cert": "./certs/server.crt",
+      "tls-key": "./certs/server.key"
+    },
+    {
+      "type": "snowflake",
+      "listen": "0.0.0.0:8080",
+      "external": false,
+      "external-service": "",
+      "socks-bind": "127.0.0.1:0"
+    },
+    {
+      "type": "snowflake",
+      "listen": "0.0.0.0:8443",
+      "external": false,
+      "external-service": "",
+      "tls-cert": "./certs/server.crt",
+      "tls-key": "./certs/server.key",
+      "socks-bind": "127.0.0.1:0"
+    }
+  ],
+  "client": [
+    {
+      "type": "obfs4",
+      "listen": "127.0.0.1:4455",
+      "address": "127.0.0.1:3334",
+      "external": false,
+      "cert": "xxxxxx"
+    },
+    {
+      "type": "obfs3",
+      "listen": "127.0.0.1:4456",
+      "address": "127.0.0.1:3333",
+      "external": false,
+      "cert": ""
+    },
+    {
+      "type": "obfs2",
+      "listen": "127.0.0.1:4457",
+      "address": "127.0.0.1:3332",
+      "external": false,
+      "cert": ""
+    },
+    {
+      "type": "dpi",
+      "listen": "127.0.0.1:1080",
+      "address": "https://your-server.com:443",
+      "external": false,
+      "cert": "",
+      "enc-key": "change-me-shared-key",
+      "protocol": "auto",
+      "sni": "www.cloudflare.com",
+      "insecure": true,
+      "http-proxy": "127.0.0.1:8080",
+      "redirect-follow": true,
+      "dns-upstream": "1.1.1.1:53",
+      "dns-network": "tcp",
+      "front-host": "www.cloudflare.com",
+      "front-ip": "104.16.0.1"
+    },
+    {
+      "type": "snowflake",
+      "listen": "127.0.0.1:1081",
+      "address": "ws://your-server.com:8080/",
+      "external": false,
+      "cert": ""
+    },
+    {
+     "type": "snowflake",
+     "address": "wss://your-fronted-domain.com:443/",
+     "listen": "127.0.0.1:1081",
+     "sni": "allowed-front.example.com",
+     "front-host": "real-bridge.example.com",
+     "proxy": "socks5://127.0.0.1:9050"
+    },
+    {
+     "type": "snowflake",
+     "address": "wss://91.107.240.57:8403/",
+     "listen": "127.0.0.1:1082",
+     "front-host": "services.gen3.chabokan.net",
+     "insecure": true
+    }
+  ]
+}

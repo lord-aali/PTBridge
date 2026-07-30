@@ -1,0 +1,35 @@
+{
+  "server": [
+    {
+      "type": "dpi",
+      "http": "0.0.0.0:4000",
+      "protocol": "h2",
+      "enc-key": "pt-access"
+    },
+    {
+      "type": "snowflake",
+      "listen": "0.0.0.0:4001",
+      "socks-bind": "127.0.0.1:6414"
+    },   
+    {
+      "type": "obfs2",
+      "listen": "0.0.0.0:4002",
+      "external": true,
+      "external-service": "127.0.0.1:6414"
+    },
+    {
+      "type": "obfs3",
+      "listen": "0.0.0.0:4003",
+      "external": true,
+      "external-service": "127.0.0.1:6414"
+    },
+    {
+      "type": "obfs4",
+      "listen": "0.0.0.0:3334",
+      "external": true,
+      "external-service": "127.0.0.1:6414",
+      "cert": "i3g566UgZrg/Ve4AAUpY+QAF66DPGrnmuOQTadSylpoWePS8WYUvIcmXxcLQBSAAle0kdA",
+      "private-key": "7a05126e0a647d1143200d5bf27d3b4366acb1f13625845ceaf024e401cb62c5"
+    }
+  ]
+}

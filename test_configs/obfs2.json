@@ -1,0 +1,18 @@
+{
+  "server": [
+    {
+      "type": "obfs2",
+      "listen": "0.0.0.0:3332",
+      "external": false,
+      "external-service": ""
+    }
+  ],
+  "client": [
+    {
+      "type": "obfs2",
+      "listen": "127.0.0.1:4455",
+      "address": "127.0.0.1:3332",
+      "external": false
+    }
+  ]
+}
